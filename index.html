@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>.: Practica de Filtrado :. </title>
+
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
+
+
+	<link rel="stylesheet" href="vendor/icono/stylesheet.css">
+
+    <link rel="shorcut icon" href="img/icono.ico">
+
+	<script src="vendor/angular/angular.js" >  </script>
+</head>
+<body ng-app="Lsg" >
+	
+	<br>
+
+	<div class="container-fluid" ng-controller="filtradoController as v">
+		<div class="row">
+
+
+			<div class="col-md-5 col-md-offset-1">
+				
+				<div class="panel panel-primary">
+					
+					<div class="panel-heading ">
+						<div class="panel-title">
+							<h3 class="text-center"> 
+							{{ v.titulo }} 
+							<i class="glyphicon glyphicon-user"></i>
+	
+							</h3>
+						</div>
+					</div>
+
+					<div class="panel-body">
+
+						<form class="form-horizontal">
+							
+
+							<div class="col-md-8 col-md-offset-2">
+								
+								<label   > {{v.error[0]}}  </label>
+
+								<input type="text" class="form-control" placeholder="Cedula" ng-model="v.cedula" >
+								<br>
+								<label   > {{v.error[1]}}  </label>
+								<input type="text" class="form-control" placeholder="Nombre" ng-model="v.nombre" >
+								<br>
+								<label   > {{v.error[2]}}  </label>
+								<input type="text" class="form-control" placeholder="Apellido" ng-model="v.apellido" >
+								<br>
+								<label > Ocupacion </label>
+								<br>	
+								<select class="form-control" ng-model="v.ocupacion_id"   >
+									
+										<option  ng-repeat="e in v.ocupacion"  value={{$index}}  > {{e.texto}} </option>
+									
+								</select>
+
+								<br><br>
+								<button class="btn btn-success btn-block"  ng-disabled="!v.control"   ng-click="v.asignarNuevaPersona()"  > 
+									Agregar <i class="glyphicon glyphicon-check" ></i> 
+								</button>
+
+
+							</div>
+
+							<br>
+
+
+						</form>
+						
+					</div>
+
+					<div class="panel-footer text-center">
+
+						{{v.footer}}
+					</div>
+
+
+				</div>
+
+			</div>
+
+
+			<div class="col-md-5 ">
+				
+				<div class="panel panel-info">
+					
+					<div class="panel-heading" class="bg-primary">
+						<div class="panel-title">
+							<h3  class="text-center"> 
+							{{ v.titulo2 }}
+							<i class="glyphicon glyphicon-fire"></i>
+
+							</h3>
+						</div>
+					</div>
+
+
+					<div class="panel-body">
+
+						<form class="form-horizontal">
+							
+
+							<div class="col-md-8 col-md-offset-2">
+								
+								<input type="text" class="form-control" placeholder="Filtrar" ng-model="v.filtrado"  >
+								<br>
+								<label > Buscar por Ocupacion </label>
+								<br>	
+								<select class="form-control" ng-model="v.filtradoOcupacion" >
+									<option  ng-repeat="oc in v.ocupacion"  value={{$index}}> {{oc.texto}} </option>
+								</select>
+								<br>	
+								<label > Ordenar por Nombre </label>
+								<br>
+								<select class="form-control" ng-model="v.filtradoOrdenamiento"  >
+									<option  ng-value="true" > Mayor </option>
+									<option  ng-value="false" > Menor </option>
+								</select>
+							
+								
+
+								<!-- Agregar Ocupacion  -->
+								<br>
+								<label > Agregar Ocupación </label>
+								<br>
+								<input ng-model="v.agregarOcupacion" type="text" class="form-control" placeholder="Filtrar">
+
+								<button ng-click="v.asignarNuevaOcupacion()"   class="btn btn-danger btn-block" > Agregar <i class="glyphicon glyphicon-download"></i> </button>
+								
+								<!-- ---------------------------------- -->
+
+
+							</div>
+
+						</form>
+						
+					</div>
+
+
+					<div class="panel-footer text-center">
+						{{v.footer}}
+					</div>
+
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+
+		<!-- Tabla  -->
+
+		<div class="row">
+			
+			<div class="col-md-10 col-md-offset-1">
+				
+				<br>
+				<h3 class="text-center well"> Registro de Usuarios</h3>
+
+				<table class="table table-striped">
+
+					<caption> {{ v.footer}} </caption>
+
+					 <thead>
+						 <tr>
+						 	<th>Cedula</th>
+						 	<th>Nombre</th>
+						 	<th>Apellido</th>
+						 	<th>Ocupación</th>
+						 </tr>
+					 </thead>
+					 <tbody>
+
+
+						 <tr  ng-repeat="x in v.personas | filter: v.filtrado | filter : v.filtradoOcupacion | orderBy : 'x.nombre' : v.filtradoOrdenamiento "   ng-class="  {'danger' : $last  , 'warning' : $middle , 'info' : $first  } "  >
+						 	<td> {{x.cedula }} </td>
+						 	<td> {{x.nombre }} </td>
+						 	<td> {{x.apellido}} </td>
+						 	<td> {{v.ocupacion[ x.ocupacion_id ].texto  }} </td>
+						 </tr>
+						
+					 </tbody>
+				</table>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<script src="filtrado.js"  ></script>
+	<script src="vendor/jquery/jquery.js" > </script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js" > </script>
+
+
+</body>
+</html>
