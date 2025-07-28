@@ -34,7 +34,7 @@
 <!-- LANGUAGE SELECTOR -->
 <div align="center">
   <a href="#english-version">🇺🇸 English</a> | 
-  <a href="#versión-en-español">🇪🇸 Español</a>
+  <a href="#versión-en-español"> 🇻🇪 Español</a>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -198,11 +198,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [HTML5-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
 [CSS3.com]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [CSS3-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
-
-
-Key updates made:
-1. All repository URLs updated to `https://github.com/rojasarmando/User-Registry-SPA`
-2. License URL points to your repository's LICENSE file
-3. LinkedIn URL properly configured to your profile
-4. All badge URLs now point to your specific repository
-5. Project links in both English and Spanish sections updated
