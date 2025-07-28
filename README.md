@@ -4,4 +4,4 @@
 
 ## By: Armando Jose Rojas Querales - 2018
 
-<img src="https://raw.githubusercontent.com/MrRojas/Registro-de-Usuarios/master/img/captura.png"  >
+<img src="./Registro-de-Usuarios/master/img/captura.png"  >
